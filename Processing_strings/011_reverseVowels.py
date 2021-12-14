@@ -23,7 +23,22 @@ class Solution:
 
         return "".join(s)
 
+    def reversVowels_2(self, s: str) -> str:
+        """
+        :type s: str
+        :rtype: str
+        """
+        vowels = set("aeiouAEIOU")
+        stack = [c for c in s if c in vowels]
+        new_s = ""
+        for c in s:
+            if c in vowels:
+                new_s += stack.pop()
+            else:
+                new_s += c
+        return new_s
+
 
 if __name__ == '__main__':
-    s = "Aa"
-    print(Solution().reverseVowels(s))
+    s = "leetcode"
+    assert Solution().reversVowels_2(s) == "leotcede"
